@@ -1,0 +1,17 @@
+Fabric : ERXJavaScript {
+	scriptSource = "fabric.min.js";
+}
+
+ImageDraw : WOForm {
+	onsubmit = "imageFromCanvas();";
+}
+
+ImageData : WOHiddenField {
+	value = imageData;
+	id = "ImageData"
+}
+
+Submit : WOSubmitButton {
+	value = "Submit";
+	action = submitForm;
+}

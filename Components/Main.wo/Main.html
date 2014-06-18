@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<webobject name = "Fabric"/>
+<title>Fabric/Canvas Test</title>
+</head>
+<body>
+
+<webobject name = "ImageDraw">
+<webobject name = "ImageData"/>
+<webobject name = "Submit"/>
+</webobject>
+
+<hr>
+
+<canvas width="300" height="100" id="Canvas" style="border: 1px solid Black;"></canvas><br>
+<input type="button" value="Show Image" onclick="imageFromCanvas()">
+<input type="button" value="Clear" onclick="clearCanvas();" class="clear"><br><br>
+<textarea id="ImageBase64" style="width: 300px; height: 100px;"></textarea><br>
+<img id="ImagePreview"><br>
+
+<script type="text/javascript">
+
+var canvas = new fabric.Canvas("Canvas", {
+	freeDrawingCursor: "pointer",
+	allowTouchScrolling: false,
+	backgroundColor: 'rgba(255, 255, 255, 1)',
+	isDrawingMode: true
+});
+
+function imageFromCanvas() {
+	canvas.isDrawingMode = false;
+
+	var ImageBase64 = document.getElementById("ImageBase64");
+	var ImagePreview = document.getElementById("ImagePreview");
+	var ImageData = document.getElementById("ImageData");
+
+	var canvasData = canvas.toDataURL({
+		format: 'jpeg',
+		quality: 0.5
+	});
+
+	ImagePreview.src = canvasData;
+	ImageBase64.innerHTML = canvasData;
+	ImageData.value = canvasData;
+}
+
+function clearCanvas() {
+	canvas.clear();	
+}
+
+</script>
+</body>
+</html>
+
+
+</body>
+</html>
